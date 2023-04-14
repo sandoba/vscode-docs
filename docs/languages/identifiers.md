@@ -3,7 +3,7 @@ Area: languages
 TOCTitle: Language Identifiers
 ContentId: 3f773ade-7e71-4fb9-9bb9-d9e0b20fa799
 PageTitle: Visual Studio Code language identifiers
-DateApproved: 2/2/2023
+DateApproved: 3/30/2023
 MetaDescription: Visual Studio Code language mode identifiers
 ---
 # Language Identifiers
@@ -69,8 +69,9 @@ Coffeescript | `coffeescript`
 C | `c`
 C++ | `cpp`
 C# | `csharp`
-CUDA C++ | `cuda-cpp`
+Compose | `dockercompose`
 CSS | `css`
+CUDA C++ | `cuda-cpp`
 Diff | `diff`
 Dockerfile | `dockerfile`
 F# | `fsharp`

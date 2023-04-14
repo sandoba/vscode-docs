@@ -5,7 +5,7 @@ TOCTitle: Dev Container CLI
 PageTitle: Installing and working with the devcontainer CLI
 ContentId: 8946213d-716e-41ca-955f-944a41c70353
 MetaDescription: Documentation on using the development container (dev container) command-line interface
-DateApproved: 2/2/2023
+DateApproved: 3/30/2023
 ---
 # Dev Container CLI
 
@@ -166,6 +166,10 @@ For example, you may want to pre-build a number of images that you then reuse ac
 ## Avoiding problems with images built using Docker
 
 Given Dockerfiles and Docker Compose files can be used without VS Code or the `devcontainer` CLI, you may want to let users know that they should not try to build the image directly. You may learn more in the [advanced dev container documentation](/remote/advancedcontainers/reduce-docker-warnings.md#avoiding-problems-with-images-built-using-docker).
+
+## Templates and Features
+
+You can work with dev container [Templates](https://containers.dev/implementors/templates/) and [Features](https://containers.dev/implementors/features/) using the dev container CLI. As you create and use Templates, you may want to publish them for others, which you may learn more about in the [dev container spec](https://containers.dev/implementors/templates-distribution/).
 
 ## Feedback
 

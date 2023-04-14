@@ -4,7 +4,7 @@ Area: python
 TOCTitle: Editing Code
 ContentId: 0ccb0e35-c4b2-4001-91bf-79ff1618f601
 PageTitle: Editing Python Code in Visual Studio Code
-DateApproved: 11/3/2022
+DateApproved: 3/6/2023
 MetaDescription: Editing Python in Visual Studio Code
 MetaSocialImage: images/tutorial/social.png
 ---
@@ -106,18 +106,6 @@ The import suggestions list is ordered with import statements for packages (or m
 
 Just like with auto imports, only top-levels symbols are suggested by default. You can customize this behavior through the `python.analysis.packageIndexDepths` setting.
 
-## Run Selection/Line in Terminal (REPL)
-
-The **Python: Run Selection/Line in Python Terminal** command (`kbstyle(Shift+Enter)`) is a simple way to take whatever code is selected, or the code on the current line if there is no selection, and run it in the Python Terminal. An identical **Run Selection/Line in Python Terminal** command is also available on the context menu for a selection in the editor.
-
-VS Code automatically removes indents based on the first non-empty line of the selection, shifting all other lines left when needed.
-
-Source code that runs in the terminal/REPL is cumulative until the current instance of the terminal is closed.
-
-The command opens the Python Terminal if necessary; you can also open the interactive REPL environment directly using the **Python: Start REPL** command. (Initial startup might take a few moments especially if the first statement you run is an `import`.)
-
-On first use of the **Python: Run Selection/Line in Python Terminal** command, VS Code may send the text to the REPL before that environment is ready, in which case the selection or line isn't run. If you come across this behavior, try the command again when the REPL has finished loading.
-
 ## Formatting
 
 Formatting makes code easier to read by human beings. It applies specific rules and conventions for line spacing, indents, spacing around operators, and so on. You can view an example on the [autopep8](https://pypi.org/project/autopep8/) page. Keep in mind, formatting doesn't affect the functionality of the code itself.
@@ -142,10 +130,6 @@ The following settings apply to the individual formatters. The Python extension 
 | black (see note) | pip install black | blackArgs | blackPath |
 | yapf | pip install yapf | yapfArgs | yapfPath |
 
-> **Note**: By default, the Black formatter can't be installed when a Python 2 environment is active. Attempting to do so may display the message "Formatter black is not installed. Install?". If you try to install Black in response, another message appears saying "Could not find a version that satisfies the requirement black' No matching distribution found for black."
->
-> To work around this issue and use the Black formatter with Python 2, first install Black in a Python 3 environment. Then set the `python.formatting.blackPath` setting to that install location.
-
 When using custom arguments, each top-level element of an argument string that's separated by space on the command line must be a separate item in the args list. For example:
 
 ```json
@@ -160,10 +144,10 @@ In the second example, the top-level element `{based_on_style: chromium, indent_
 
 If formatting fails, check the following possible causes:
 
-| Cause | Solution |
+| Problem | Solution |
 | --- | --- |
-| The path to the python interpreter is incorrect. | Make sure you selected a valid interpreter path by running the **Python: Select Interpreter** command. |
-| The formatter is not installed in the current environment. |Open a command prompt, navigate to the location where your selected interpreter is, and run `pip install` for the formatter.
+| The formatter is not installed in the current environment. |Open a command prompt, navigate to the location where your selected interpreter is, and run `pip install` for the formatter.|
+| The formatter is installed in an environment but a notification is displayed saying it still needs to be installed. | You might have the wrong Python interpreter selected in your workspace. Make sure you selected a valid interpreter path by running the **Python: Select Interpreter** command. |
 | The path to the formatter is incorrect. | Check the value of the appropriate `python.formatting.<formatter>Path` setting. |
 | Custom arguments for the formatter are incorrect. | Check that the appropriate `python.formatting.<formatter>Path` setting does not contain arguments, and that `python.formatting.<formatter>Args` contains a list of individual top-level argument elements such as `"python.formatting.yapfArgs": ["--style", "{based_on_style: chromium, indent_width: 2}"]`. |
 | Pop up with warning message `Black does not support the "Format Select" command.` | `black` does not support formatting sections of code, it can be prevented with the following settings `"[python]": {"editor.formatOnPaste": false, "editor.formatOnSaveMode": "file"}`.|
@@ -172,7 +156,7 @@ If formatting fails, check the following possible causes:
 
 ## Refactoring
 
-The Python extension adds the following refactoring functionalities: **Extract Variable**, **Extract Method**, **Rename Module**, and **Sort Imports**.
+The Python extension adds the following refactoring functionalities: **Extract Variable**, **Extract Method** and **Rename Module**. It also supports extensions that implement additional refactoring features such as **Sort Imports**.
 
 ### Extract Variable
 
@@ -200,27 +184,13 @@ To customize which references need to be updated, you can toggle the checkboxes 
 
 ### Sort Imports
 
-Sort Imports uses the isort package to consolidate specific imports from the same module into a single `import` statement and to organize `import` statements in alphabetical order.
+The Python extension supports extensions such as [isort](https://marketplace.visualstudio.com/items?itemName=ms-python.isort) and [Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff) that implement the **Sort Imports** functionality. This command consolidates specific imports from the same module into a single `import` statement,  and organizes `import` statements in alphabetical order.
 
-Invoked by:
+You can invoke this by installing an extension that supports sorting imports, then opening the Command Palette (`kb(workbench.action.showCommands)`) and running **Organize Imports**.
 
-- Right-click in editor and select **Sort Imports** (no selection is required)
-- Command Palette (`kb(workbench.action.showCommands)`), then **Python Refactor: Sort Imports**
-- Assign a keyboard shortcut to the `python.sortImports` command
+> **Tip**: you can assign a keyboard shortcut to the `editor.action.organizeImports` command.
 
 ![Sorting import statements](images/editing/sortImports.gif)
-
-Custom arguments to isort are specified in the `python.sortImports.args` setting, where each top-level element, as separated by spaces on the command line, is a separate item in the array:
-
-```json
-"python.sortImports.args": ["-rc", "--atomic"],
-```
-
-To use a custom isort script, use the `python.sortImports.path` setting to specify the path.
-
-Further configurations can be stored in an `.isort.cfg` file as documented on [isort configuration](https://pycqa.github.io/isort/docs/configuration/config_files.html).
-
-> **Note**: For those migrating from isort4 to isort5, some CLI flags and config options have changed, refer to the project's [isort5 upgrade guide](https://pycqa.github.io/isort/docs/upgrade_guides/5.0.0.html).
 
 ## Next steps
 

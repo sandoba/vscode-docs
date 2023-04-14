@@ -1,7 +1,7 @@
 ---
 # DO NOT TOUCH — Managed by doc writer
 ContentId: 9b10cda2-4eb0-4989-8f82-23a46b96c1bb
-DateApproved: 2/2/2023
+DateApproved: 3/30/2023
 
 # Summarize the whole topic in less than 300 characters for SEO purpose
 MetaDescription: A guide to using Tree View in Visual Studio Code extension (plug-in).
@@ -126,8 +126,6 @@ export class NodeDependenciesProvider implements vscode.TreeDataProvider<Depende
      */
     private getDepsInPackageJson(packageJsonPath: string): Dependency[] {
         if (this.pathExists(packageJsonPath)) {
-            const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
-
             const toDep = (moduleName: string, version: string): Dependency => {
                 if (this.pathExists(path.join(this.workspaceRoot, 'node_modules', moduleName))) {
                     return new Dependency(moduleName, version, vscode.TreeItemCollapsibleState.Collapsed);
@@ -135,6 +133,8 @@ export class NodeDependenciesProvider implements vscode.TreeDataProvider<Depende
                     return new Dependency(moduleName, version, vscode.TreeItemCollapsibleState.None);
                 }
             };
+
+            const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
 
             const deps = packageJson.dependencies
                 ? Object.keys(packageJson.dependencies).map(dep => toDep(dep, packageJson.dependencies[dep]))
@@ -278,7 +278,6 @@ It is important that your extension is activated only when user needs the functi
 >],
 >```
 
-
 ## View Container
 
 A View Container contains a list of views that are displayed in the Activity Bar or Panel along with the built-in View Containers. Examples of built-in View Containers are Source Control and Explorer.
@@ -289,7 +288,7 @@ To contribute a View Container, you should first register it using [contributes.
 
 You have to specify the following required fields:
 
-- `id` - The id of the new view container you're creating.
+- `id` - The ID of the new view container you're creating.
 - `title` - The name that will show up at the top of the view container.
 - `icon` - An image that will be displayed for the view container when in the Activity Bar.
 

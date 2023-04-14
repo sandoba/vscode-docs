@@ -256,7 +256,17 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://code.visualstudio.com/docs/editor/profiles</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://code.visualstudio.com/docs/sourcecontrol/overview</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://code.visualstudio.com/docs/sourcecontrol/intro-to-git</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -446,6 +456,11 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://code.visualstudio.com/docs/languages/polyglot</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://code.visualstudio.com/docs/languages/jsconfig</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -462,6 +477,11 @@
     </url>
     <url>
         <loc>https://code.visualstudio.com/docs/languages/r</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://code.visualstudio.com/docs/languages/ruby</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
